@@ -1,0 +1,21 @@
+# Dependencias
+node_modules
+
+# Build
+dist
+
+# CREDENCIAIS — NUNCA COMMITAR
+.env
+.env.local
+.env.production
+.env.development
+
+# Firebase
+.firebase
+firebase-debug.log
+
+# Editores
+.vscode
+.idea
+.DS_Store
+Thumbs.db

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #0a0a0a;
+    color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#7b1c2e] text-white px-6 py-3 rounded font-semibold tracking-wide
+           hover:opacity-90 transition-all duration-300 cursor-pointer inline-block;
+  }
+  .btn-gold {
+    @apply bg-[#c9a84c] text-[#0a0a0a] px-6 py-3 rounded font-semibold tracking-wide
+           hover:opacity-90 transition-all duration-300 cursor-pointer inline-block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    @apply text-3xl md:text-4xl font-bold text-white;
+  }
+  .gold-line {
+    @apply w-12 h-0.5 bg-[#c9a84c] mx-auto mt-3 mb-6;
+  }
+  .card {
+    @apply bg-[#1e1e1e] border border-white/5 rounded-lg p-6;
+  }
+  .input-admin {
+    @apply w-full bg-[#141414] border border-white/10 rounded px-4 py-2.5 text-white
+           placeholder-white/30 focus:outline-none focus:border-[#c9a84c] transition-colors;
+  }
+  .label-admin {
+    @apply block text-sm text-white/60 mb-1 font-medium;
+  }
+}
