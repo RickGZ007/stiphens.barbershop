@@ -17,19 +17,21 @@ export default function Hero({ data, bookingUrl, bookingText }) {
     <>
       {/* BANNER — imagem limpa, sem nada em cima */}
       <section id="home" className="relative w-full overflow-hidden"
-        style={{ height: "100svh", minHeight: "400px" }}>
+        style={{ 
+          height: "min(100svh, 56.25vw)",  /* 56.25vw = proporção 16:9 */
+          minHeight: "280px"
+        }}>
         <div className="absolute inset-0">
           {bg ? (
             <img
               src={bg}
               alt="Hero"
-              className="w-full h-full object-cover object-center"
-              style={{ opacity: 0.75 }}
+              className="w-full h-full"
+              style={{ objectFit: "contain", objectPosition: "center", opacity: 0.75 }}
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-[#141414] via-[#0a0a0a] to-[#1a0a0f]" />
           )}
-          {/* gradiente topo para navbar e base para transição */}
           <div className="absolute inset-0"
             style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, transparent 30%, transparent 60%, rgba(10,10,10,1) 100%)" }} />
         </div>

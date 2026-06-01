@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Servicos", href: "#servicos" },
-  { label: "Precos", href: "#precos" },
-  { label: "Contato", href: "#contato" },
-  { label: "Endereco", href: "#endereco" },
+  { label: "Home", href: "home" },
+  { label: "Sobre", href: "sobre" },
+  { label: "Servicos", href: "servicos" },
+  { label: "Precos", href: "precos" },
+  { label: "Contato", href: "contato" },
+  { label: "Endereco", href: "endereco" },
 ];
 
 export default function Navbar({ bookingUrl, bookingText, logoUrl }) {
@@ -20,20 +20,27 @@ export default function Navbar({ bookingUrl, bookingText, logoUrl }) {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const scrollTo = (href) => {
+  const scrollTo = (id) => {
     setOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    // pequeno delay para o menu fechar antes de rolar
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        const offset = 80; // altura da navbar
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 100);
   };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? "bg-[#0a0a0a]/95 backdrop-blur border-b border-white/5 py-3" : "bg-transparent py-5"
+      scrolled ? "bg-[#0a0a0a]/95 backdrop-blur border-b border-white/5 py-2" : "bg-transparent py-3"
     }`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <button onClick={() => scrollTo("#home")} className="flex items-center gap-3 group">
+        <button onClick={() => scrollTo("home")} className="flex items-center gap-3 group">
           <img
-            src={logoUrl || "https://drive.google.com/thumbnail?id=1YOhZQ-O8WbTy_X6InceUV-Z0Lpt_FXCq&sz=w1000"}
+            src={logoUrl || "/Logo1.png"}
             alt="Logo Stiphens Barbershop"
             className="h-14 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
           />
@@ -61,7 +68,7 @@ export default function Navbar({ bookingUrl, bookingText, logoUrl }) {
           )}
         </nav>
 
-        <button className="md:hidden flex flex-col gap-1.5 p-1" onClick={() => setOpen(!open)}>
+        <button className="md:hidden flex flex-col gap-1.5 p-2" onClick={() => setOpen(!open)}>
           <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
           <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${open ? "opacity-0" : ""}`} />
           <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
@@ -76,7 +83,7 @@ export default function Navbar({ bookingUrl, bookingText, logoUrl }) {
             <div className="px-6 py-4 flex flex-col gap-4">
               {links.map((l) => (
                 <button key={l.label} onClick={() => scrollTo(l.href)}
-                  className="text-white/60 hover:text-white text-left text-sm tracking-wide transition-colors">
+                  className="text-white/60 hover:text-white text-left text-sm tracking-wide transition-colors py-2 border-b border-white/5">
                   {l.label}
                 </button>
               ))}
