@@ -37,7 +37,7 @@ export default function Home() {
       {/* Footer simples */}
       <footer className="bg-[#0d0d0d] border-t border-white/5 py-8 text-center">
         <p className="text-white/20 text-sm">
-          © {new Date().getFullYear()} Stiphens Barbershop · Todos os direitos reservados
+          © {new Date().getFullYear()} Stiphens Barbershop Desenvolvido por RickGZ007 · Todos os direitos reservados
         </p>
       </footer>
     </div>

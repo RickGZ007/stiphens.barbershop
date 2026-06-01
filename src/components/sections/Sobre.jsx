@@ -85,7 +85,7 @@ export default function Sobre({ data }) {
             <FadeIn delay={0.4}>
               <div className="grid grid-cols-3 gap-4 pt-4">
                 {[
-                  { num: "5+", label: "Anos de experiencia" },
+                  { num: "+10", label: "Anos de experiencia" },
                   { num: "100%", label: "Dedicacao" },
                   { num: "★★★★★", label: "Atendimento" },
                 ].map(stat => (
